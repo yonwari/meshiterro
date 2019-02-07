@@ -1,8 +1,13 @@
 <!-- ユーザープロフィール -->
 <div class="profile-container">
   <h3 class="profile-name"><%= @user.name %></h3>
-  <%= image_tag('sample-author1.jpg', class:"img-circle pull-left profile-thumb", style: "width: 100px; height: 100px; margin-top: 20px;") %>
+  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class:"img-circle pull-left profile-img", fallback:"no_image.jpg" %>
+  <!-- 自分のプロフィール編集 -->
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"pull-right" %></p>
+  <% end %>
 </div>
+
 <!-- 投稿表示 -->
 <section class="sct-color-1 slice">
   <div class="container-fluid masonry-container">
@@ -24,7 +29,7 @@
                 </div>
 
                 <div class="block-content">
-                  <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb") %>
+                  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class:"img-circle pull-left profile-thumb", fallback:"no_image.jpg" %>
                   <h3 class="block-title">
                     <%= link_to post_image_path(post_image.id) do %>
                       <i class="fa fa-map-maker"></i> <%= post_image.shop_name %>
