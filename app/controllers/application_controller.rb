@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # nameカラム追加に伴うdevise内アクションへの修正
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
 
   protected
 

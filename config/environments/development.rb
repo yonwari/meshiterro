@@ -1,4 +1,11 @@
 Rails.application.configure do
+
+  # Cannot render console from Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  # と言われたので追加
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
+
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
