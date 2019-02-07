@@ -67,3 +67,6 @@ gem 'devise'
 # 画像投稿、リサイズ用
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
+
+# ページング用 gem
+gem 'kaminari', '~> 1.1.1'
